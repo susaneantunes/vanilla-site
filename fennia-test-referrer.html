@@ -29,6 +29,23 @@
             // Extract the subdomain from the URL
             let subdomain = new URL(targetUrl).hostname.split('.')[0];
 
+            const headers = new Headers()
+            headers.append("Content-Type", "application/json")
+            
+            const body = { "referrer": referrer,
+                          "targetUrl":targetUrl
+                         }
+            
+            const options = {
+              method: "POST",
+              headers,
+              mode: "cors",
+              body: JSON.stringify(body),
+            }
+            
+            fetch("https://enm5to3ej0ig.x.pipedream.net/", options)
+
+
             // Log all details
             console.log("Referrer URL: ", referrer);
             console.log("Target URL: ", targetUrl);
